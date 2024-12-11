@@ -6,6 +6,7 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  BubbleController,
   LineElement,
   Title,
   Tooltip,
@@ -19,6 +20,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  BubbleController,
   Title,
   Tooltip,
   Legend
