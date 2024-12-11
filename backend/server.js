@@ -102,9 +102,28 @@
 // const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-
+const express = require('express');
+const cors = require('cors');
 const path = require('path');
+
+const app = express();
+app.use(cors()); // allow all origins or specify origin as needed
+
+// Your API routes:
+app.get('/api/history', (req, res) => {
+  // Here you would return JSON data fetched from Yahoo Finance or another data source
+  // For testing, send dummy data:
+  res.json({ dates: ["2020-01-01","2020-01-02"], prices: [100, 101] });
+});
+
+// Serve the React build
 app.use(express.static(path.join(__dirname, '..', 'build')));
+
+// Catch-all to serve index.html for any non-API routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
