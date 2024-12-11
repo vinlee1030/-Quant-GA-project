@@ -86,20 +86,25 @@
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
-const express = require('express');
-const cors = require('cors');
+// const express = require('express');
+// const cors = require('cors');
 
-const app = express();
-app.use(cors()); // Allow all origins (or specify origin if needed)
+// const app = express();
+// app.use(cors()); // Allow all origins (or specify origin if needed)
 
-// Your API routes
-app.get('/api/history', (req, res) => {
-  // Return JSON data
-  //res.json({ dates: [...], prices: [...] });
+// // Your API routes
+// app.get('/api/history', (req, res) => {
+//   // Return JSON data
+//   //res.json({ dates: [...], prices: [...] });
+//   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+// });
+
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+const path = require('path');
+app.use(express.static(path.join(__dirname, '..', 'build')));
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
